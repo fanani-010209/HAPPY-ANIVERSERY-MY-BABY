@@ -1,633 +1,94 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>For My Baby 💖 | Anniversary Special</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
-        rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            min-height: 100vh;
-            background: linear-gradient(145deg, #ffdfe6 0%, #ffb7c5 100%);
-            font-family: 'Quicksand', sans-serif;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .app-wrapper {
-            max-width: 100%;
-            width: 100%;
-            background: rgba(255, 250, 245, 0.96);
-            border-radius: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-        }
-
-        .page {
-            display: none;
-            padding: 20px 16px;
-        }
-
-        .active-page {
-            display: block;
-        }
-
-        /* HALAMAN PASSWORD - HP OPTIMIZED */
-        .password-container {
-            text-align: center;
-            padding: 30px 12px;
-        }
-
-        .magic-word {
-            font-family: 'Pacifico', cursive;
-            font-size: 22px;
-            color: #c4456a;
-            background: #fff0f3;
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 60px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            line-height: 1.3;
-        }
-
-        .password-input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            max-width: 280px;
-            margin: 0 auto;
-        }
-
-        .password-input-group input {
-            border: 2px solid #ffb7c5;
-            padding: 14px 18px;
-            font-size: 16px;
-            border-radius: 50px;
-            width: 100%;
-            outline: none;
-            text-align: center;
-            background: white;
-        }
-
-        .password-input-group button {
-            background: #ff7b9c;
-            border: none;
-            padding: 14px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 16px;
-            color: white;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .error-msg {
-            background: #ffe0e0;
-            color: #c73659;
-            padding: 8px 20px;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        /* HALAMAN WELCOME */
-        .welcome-page {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 280px;
-        }
-
-        .welcome-card {
-            background: #fff5f7;
-            border-radius: 28px;
-            padding: 24px 28px;
-            margin: 0 auto;
-            width: 85%;
-            max-width: 300px;
-        }
-
-        .welcome-hello {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #bd3f62;
-        }
-
-        .welcome-subtext {
-            font-size: 0.85rem;
-            margin: 8px 0 0;
-            color: #b55778;
-        }
-
-        .start-btn {
-            background: #ff8dab;
-            border: none;
-            padding: 10px 24px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            border-radius: 50px;
-            color: white;
-            margin-top: 18px;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        /* MENU HORIZONTAL - HP (bisa di-scroll) */
-        .menu-horizontal {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 15px 0 20px;
-            border-bottom: 2px dashed #ffc0ce;
-            padding-bottom: 15px;
-        }
-
-        .menu-item {
-            background: #ffe3ea;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: #a53f5e;
-            cursor: pointer;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .menu-item:hover {
-            background: #ffbfce;
-            transform: translateY(-2px);
-        }
-
-        .content-area {
-            background: #fff9fb;
-            border-radius: 32px;
-            padding: 18px;
-            min-height: 400px;
-        }
-
-        .happy-anniv {
-            text-align: center;
-            padding: 30px 12px;
-        }
-
-        .happy-anniv h1 {
-            font-family: 'Pacifico', cursive;
-            font-size: 2rem;
-            color: #d45a7a;
-        }
-
-        .heart-icon {
-            font-size: 2.5rem;
-            margin: 15px 0;
-        }
-
-        /* LOVE ZONE */
-        .lovezone-block {
-            text-align: center;
-            padding: 10px;
-        }
-
-        .i-love-you {
-            font-size: 40px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ff3b6f, #ff8eae);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin: 15px 0;
-        }
-
-        .love-too-btn {
-            background: #ffb7c9;
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 60px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #9f2b4b;
-            cursor: pointer;
-            margin: 15px 0;
-        }
-
-        .long-romantic-text {
-            background: #fff2f5;
-            padding: 18px;
-            border-radius: 32px;
-            font-size: 1rem;
-            line-height: 1.5;
-            text-align: left;
-            border-left: 6px solid #ff6f91;
-            margin-top: 15px;
-            color: #543a48;
-            display: none;
-        }
-
-        .long-romantic-text.show {
-            display: block;
-        }
-
-        /* GALERI - UKURAN HP */
-        .gallery-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 16px;
-        }
-
-        .card {
-            width: calc(50% - 8px);
-            max-width: 280px;
-            aspect-ratio: 1 / 1;
-            background: linear-gradient(145deg, #fce4ec, #ffe0e7);
-            border-radius: 32px;
-            overflow: hidden;
-            transition: transform 0.2s;
-            cursor: pointer;
-            border: 3px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card:hover {
-            transform: scale(1.02);
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* KATA-KATA LIST */
-        .romantic-list {
-            padding: 20px 16px;
-            background: #fff0f5;
-            border-radius: 32px;
-        }
-
-        .romantic-list h3 {
-            font-family: 'Pacifico', cursive;
-            font-size: 1.4rem;
-            color: #bc4e72;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .romantic-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 15px;
-            margin: 8px 0;
-            background: white;
-            border-radius: 50px;
-            border-left: 4px solid #ff8dab;
-        }
-
-        .romantic-emoji {
-            font-size: 1.4rem;
-            min-width: 40px;
-        }
-
-        .romantic-text {
-            flex: 1;
-            font-weight: 500;
-            color: #6b3a4a;
-            font-size: 0.85rem;
-        }
-
-        /* FINAL STORY */
-        .final-story {
-            background: #fff3f6;
-            padding: 20px;
-            border-radius: 32px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: #4a2f3a;
-        }
-
-        .emoji-big {
-            font-size: 2rem;
-            letter-spacing: 6px;
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .back-menu-btn {
-            background: #ff9eb6;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            cursor: pointer;
-            color: white;
-            width: 100%;
-            max-width: 200px;
-            display: block;
-            margin: 15px auto 0;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 10px;
-            padding: 12px;
-            color: #b9758a;
-        }
-
-        .tips-panel {
-            background: #fff0d6;
-            border-radius: 24px;
-            padding: 12px 16px;
-            margin-top: 16px;
-            text-align: left;
-            font-size: 11px;
-            color: #a55a6e;
-            border-left: 4px solid #ff8dab;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <div class="app-wrapper" id="app">
-
+        
+        <!-- HALAMAN PASSWORD -->
         <div id="passwordPage" class="page active-page">
             <div class="password-container">
                 <div class="magic-word">✨ Masukkan Nomor Yang Soesial 😍 ✨</div>
                 <div class="password-input-group">
-                    <input type="password" id="passwordInput" placeholder="Masukkan Disini">
+                    <input type="password" id="passwordInput" placeholder="Masukkan Disini" pattern="[0-9]*" inputmode="numeric">
                     <button id="submitPassword">Lanjutt 🔑</button>
                 </div>
-                <div id="errorMsg" class="error-msg" style="display: none;">❌ Kok Salah Adek Lupa yaa.. Ayo Coba Lagi ❌
-                </div>
-                <div style="font-size:13px; margin-top: 20px; opacity:0.7;">✨ Petunjuk:Tanggal Paling Spesial ✨
-                </div>
+                <div id="errorMsg" class="error-msg" style="display: none;">❌ Kok Salah Adek Lupa yaa.. Ayo Coba Lagi ❌</div>
+                <div style="font-size:13px; margin-top: 24px; color: var(--text-muted);">✨ Petunjuk: Tanggal Paling Spesial ✨</div>
             </div>
         </div>
 
+        <!-- HALAMAN WELCOME -->
         <div id="welcomePage" class="page">
             <div class="welcome-page">
-                <div class="welcome-card">
-                    <div class="welcome-hello">Hello My Love! 😍</div>
-                    <div class="welcome-subtext">Semoga Adek Suka 😊</div>
-                    <button id="startExploringBtn" class="start-btn">🌟 Ayo Berjelajah 🌟</button>
-                </div>
+                <div class="welcome-hello">Hello My Love! 😍</div>
+                <div class="welcome-subtext">Semoga Adek Suka 😊</div>
+                <button id="startExploringBtn" class="start-btn">🌟 Ayo Berjelajah 🌟</button>
             </div>
         </div>
 
+        <!-- HALAMAN UTAMA -->
         <div id="mainMenuPage" class="page">
-            <div style="text-align: center;">
-                <h2 style="color:#bc4e72; font-size:1.3rem;">For My Baby 🥰</h2>
-                <p style="color:#b36b84; font-size:0.8rem;">A special place just for you</p>
+            <div style="text-align: center; margin-bottom: 12px;">
+                <h2 style="color: var(--secondary); font-size:1.2rem; font-weight: 700;">For My Baby 🥰</h2>
+                <p style="color: var(--text-muted); font-size:0.8rem;">A special place just for you</p>
             </div>
+            
             <div class="menu-horizontal">
                 <div class="menu-item" data-menu="lovezone">💖 Love Zone</div>
                 <div class="menu-item" data-menu="gallery">🖼️ Gallery</div>
                 <div class="menu-item" data-menu="words">📝 Kata-Kata</div>
                 <div class="menu-item" data-menu="next">🚀 Lanjut</div>
             </div>
+            
             <div class="content-area" id="dynamicContent"></div>
         </div>
-<div class="section" id="page5">
-  <h1 class="fade">terima kasih untuk semuanya ❤️</h1>
 
-  <button onclick="tampilkanPesan()">
-    Kembali ke Menu Utama
-  </button>
+        <!-- HALAMAN FINAL STORY -->
+        <div id="finalStoryPage" class="page">
+            <div class="story-slider-container">
+                <div class="story-wrapper" id="storyWrapper">
+                    
+                    <div class="story-slide">
+                        <p style="font-size:1.3rem; font-weight:bold; text-align:center; color: var(--secondary); font-family: 'Playfair Display', serif; margin-bottom: 20px;">💖 Our Beautiful Story 💖</p>
+                        <p>Terima kasih ya, untuk 6 tahun yang luar biasa ini ❤️ Gak terasa, sudah sejauh ini kita berjalan bersama—melewati banyak cerita, tawa, tangis, dan semua hal yang membentuk kita sampai sekarang.</p>
+                        <p>Terima kasih karena kamu tetap bertahan, tetap memilih aku, bahkan di saat keadaan tidak selalu mudah.</p>
+                    </div>
+        
+                    <div class="story-slide">
+                        <p style="font-size:1.3rem; font-weight:bold; text-align:center; color: var(--secondary); font-family: 'Playfair Display', serif; margin-bottom: 20px;">🏠 Tempatku Pulang 🏠</p>
+                        <p>Selama 6 tahun ini, kamu sudah jadi bagian yang sangat penting dalam hidupku. Terima kasih untuk kesabaranmu, untuk pengertianmu, dan untuk semua usaha yang kamu lakukan demi menjaga hubungan kita tetap utuh.</p>
+                        <p>Aku tahu, mungkin aku belum selalu jadi yang terbaik, tapi kamu tetap ada, dan itu sangat berarti buatku. Terima kasih sudah menjadi rumah, tempat aku pulang, tempat aku merasa aman dan dimengerti.</p>
+                    </div>
+        
+                    <div class="story-slide">
+                        <p style="font-size:1.3rem; font-weight:bold; text-align:center; color: var(--secondary); font-family: 'Playfair Display', serif; margin-bottom: 20px;">✨ Menuju Masa Depan ✨</p>
+                        <p>Dari semua yang sudah kita lewati, aku benar-benar bersyukur karena kita masih bersama sampai hari ini.</p>
+                        <p>Semoga ke depan kita bisa terus melangkah bersama, memperbaiki yang kurang, menjaga yang sudah ada, dan menciptakan lebih banyak kenangan indah lagi.</p>
+                        <p style="text-align: center; font-weight: bold; color: var(--secondary); margin-top: 15px;">I love you for all time, sayang. Selamanya. ❤️</p>
+                    </div>
+        
+                </div>
+            </div>
+        
+            <div class="slider-dots" id="sliderDots"></div>
+        
+            <div class="slider-nav">
+                <button class="nav-slide-btn" id="prevSlideBtn" disabled>◀ Mundur</button>
+                <button class="nav-slide-btn" id="nextSlideBtn">Lanjut ▶</button>
+            </div>
+        
+            <button id="backToMainFromFinal" class="back-menu-btn" style="background: none; border: 1px dashed var(--primary); color: var(--secondary); box-shadow: none; margin-top: 30px;">❤️ Kembali ke Menu Utama</button>
+        </div>
 
-  <div id="pesanAkhir" style="display:none; margin-top:30px;">
-    <p>Terima kasih telah meluangkan waktu untuk membuka halaman ini.</p>
-    <p>Setiap foto, cerita, dan kenangan di dalamnya memiliki arti yang sangat berharga.</p>
-    <p>Semoga kebahagiaan selalu menyertaimu di setiap langkah.</p>
-    <p>❤️</p>
-  </div>
-</div>
-        <footer>💕 for my dearest love 💕</footer>
+        <footer>💕 FOR MY DEAREST LOVE 💕</footer>
     </div>
 
-    <script>
-        // ============================================================
-        // 🔐 PASSWORD
-        // ============================================================
-        const CORRECT_PASSWORD = "060620";
-
-        // ============================================================
-        //
-        // ============================================================
-
-        // ⬇️⬇️⬇️ GANTI NAMA FILE FOTO DI SINI ⬇️⬇️⬇️
-        const fotoKoleksi = [
-            "gambar2.png",   // ganti dengan nama file foto kamu
-            "gambar3.png",   // ganti dengan nama file foto kamu
-            "gambar1.jpg",   // ganti dengan nama file foto kamu
-            "gambar4.png",   // ganti dengan nama file foto kamu
-            "gambar5.jpg",   // ganti dengan nama file foto kamu
-            "gambar7.png",   // ganti dengan nama file foto kamu
-            "gambar8.png"    // ganti dengan nama file foto kamu
-        ];
-
-        // ============================================================
-
-        const romanticWordsList = [
-            { emoji: "💖", text: "Kamu adalah cinta dalam hidupku" },
-            { emoji: "🌟", text: "Setiap hari bersamamu adalah anugerah" },
-            { emoji: "🌹", text: "Hatiku berdetak hanya untukmu" },
-            { emoji: "☀️", text: "Kamu membuat hariku lebih cerah" },
-            { emoji: "🏡", text: "Bersamamu, aku merasa dirumah" },
-            { emoji: "💫", text: "Kamu adalah bintang dalam hidupku" },
-            { emoji: "🎁", text: "Kamu adalah hadiah terindah" },
-            { emoji: "💌", text: "Aku mencintaimu lebih dari kata-kata" },
-            { emoji: "🌸", text: "Cintaku padamu mekar setiap hari" },
-            { emoji: "💕", text: "Kamu dan aku selamanya" }
-        ];
-
-        const loveZoneLongText = `
-        🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹<br><br>
-          Selamat anniversary ke-6, sayang ❤️
-Enam tahun bukan waktu yang sebentar, dan aku bersyukur karena kita masih di sini—bersama, saling menggenggam, melewati semua hal yang datang dalam perjalanan kita. Dari awal sampai sekarang, banyak sekali cerita yang sudah kita lalui, dan semuanya punya tempat tersendiri di hatiku.
-
-Terima kasih sudah tetap bertahan, sudah tetap memilih aku di setiap keadaan, bahkan saat semuanya tidak selalu mudah. Kamu adalah alasan kenapa aku percaya bahwa cinta itu bukan hanya tentang kata-kata, tapi tentang usaha, kesabaran, dan kesetiaan yang nyata.
-
-Selama 6 tahun ini, kamu sudah jadi rumah untukku—tempat aku pulang, tempat aku merasa tenang, dan tempat aku ingin terus kembali. Aku mungkin bukan yang paling sempurna, tapi aku akan terus berusaha jadi yang terbaik untuk kita.
-
-Semoga hubungan kita ke depan semakin kuat, semakin dewasa, dan tetap penuh dengan cinta yang sederhana tapi tulus. Aku ingin terus berjalan bersamamu, menciptakan lebih banyak kenangan, dan melewati banyak anniversary lainnya bareng kamu.
-
-Selamat anniversary ke-6 kita, dan terima kasih untuk semuanya ❤️❤️❤️ I LOVE YOU MORE THAN WORDS CAN SAY. 💖💖💖<br><br>
-        🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹🌹
-    `;
-
-        const finalStoryText = `
-        <p style="font-size:1.2rem; font-weight:bold; text-align:center;">💖 Our Beautiful Story 💖</p>
-        <br>
-        Terima kasih ya, untuk 6 tahun yang luar biasa ini ❤️
-Gak terasa, sudah sejauh ini kita berjalan bersama—melewati banyak cerita, tawa, tangis, dan semua hal yang membentuk kita sampai sekarang. Terima kasih karena kamu tetap bertahan, tetap memilih aku, bahkan di saat keadaan tidak selalu mudah.
-
-Selama 6 tahun ini, kamu sudah jadi bagian yang sangat penting dalam hidupku. Terima kasih untuk kesabaranmu, untuk pengertianmu, dan untuk semua usaha yang kamu lakukan demi menjaga hubungan kita tetap utuh. Aku tahu, mungkin aku belum selalu jadi yang terbaik, tapi kamu tetap ada, dan itu sangat berarti buatku.
-
-Terima kasih sudah menjadi rumah, tempat aku pulang, tempat aku merasa aman dan dimengerti. Dari semua yang sudah kita lewati, aku benar-benar bersyukur karena kita masih bersama sampai hari ini.
-
-Semoga ke depan kita bisa terus melangkah bersama, memperbaiki yang kurang, menjaga yang sudah ada, dan menciptakan lebih banyak kenangan indah lagi.
-
-Terima kasih untuk 6 tahun ini, dan untuk semua waktu yang masih akan kita jalani bersama ❤️❤️❤️
-    `;
-
-        const happyAnniversaryText = `
-        <div class="happy-anniv">
-            <div class="heart-icon">💖💕💖</div>
-            <h1>Happy Anniversary! 🎉</h1>
-            <p>Selamat hari jadi untuk kita sayang 💑</p>
-            <p style="font-size: 0.85rem; margin-top: 15px;">✨ Pilih menu di atas untuk melihat kejutan dariku ✨</p>
-        </div>
-    `;
-
-        // ========== JANGAN UBAH KODE DI BAWAH INI ==========
-        const passwordPage = document.getElementById('passwordPage');
-        const welcomePage = document.getElementById('welcomePage');
-        const mainMenuPage = document.getElementById('mainMenuPage');
-        const finalStoryPage = document.getElementById('finalStoryPage');
-        const dynamicDiv = document.getElementById('dynamicContent');
-
-        function showPage(pageId) {
-            passwordPage.classList.remove('active-page');
-            welcomePage.classList.remove('active-page');
-            mainMenuPage.classList.remove('active-page');
-            finalStoryPage.classList.remove('active-page');
-            if (pageId === 'password') passwordPage.classList.add('active-page');
-            else if (pageId === 'welcome') welcomePage.classList.add('active-page');
-            else if (pageId === 'mainmenu') {
-                mainMenuPage.classList.add('active-page');
-                if (!window._menuInited) {
-                    dynamicDiv.innerHTML = happyAnniversaryText;
-                    window._menuInited = true;
-                }
-                bindMenuEvents();
-            }
-            else if (pageId === 'finalstory') {
-                finalStoryPage.classList.add('active-page');
-                document.getElementById('finalTextContainer').innerHTML = finalStoryText;
-                document.getElementById('finalEmojis').innerHTML = finalEmojis;
-            }
-        }
-
-        function showLoveZone() {
-            dynamicDiv.innerHTML = `
-            <div class="lovezone-block">
-                <div class="i-love-you">💖 I LOVE YOU 💖</div>
-                <div id="loveTooTrigger" class="love-too-btn">💗 I LOVE YOU TOO 💗</div>
-                <div id="hiddenLongText" class="long-romantic-text">${loveZoneLongText}</div>
-            </div>
-        `;
-            const btn = document.getElementById('loveTooTrigger');
-            const txt = document.getElementById('hiddenLongText');
-            if (btn) {
-                btn.onclick = () => {
-                    txt.classList.toggle('show');
-                    if (txt.classList.contains('show')) {
-                        setTimeout(() => {
-                            txt.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }, 100);
-                    }
-                };
-            }
-        }
-
-        function showGallery() {
-            let html = `<div class="gallery-grid">`;
-
-            for (let i = 0; i < fotoKoleksi.length; i++) {
-                const file = fotoKoleksi[i];
-                html += `
-                <div class="card">
-                    <img src="${file}" alt="Kenangan ${i + 1}" loading="eager" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'200\\' height=\\'200\\' viewBox=\\'0 0 200 200\\'%3E%3Crect width=\\'200\\' height=\\'200\\' fill=\\'%23fce4ec\\'/%3E%3Ctext x=\\'100\\' y=\\'100\\' text-anchor=\\'middle\\' dy=\\'.3em\\' fill=\\'%23b55778\\' font-size=\\'12\\'%3E📷 Foto ${i + 1}%3C/text%3E%3Ctext x=\\'100\\' y=\\'130\\' text-anchor=\\'middle\\' dy=\\'.3em\\' fill=\\'%23b55778\\' font-size=\\'9\\'%3E${file}%3C/text%3E%3C/svg%3E';">
-                </div>
-            `;
-            }
-
-            html += `</div>`;
-            html += `
-                  <div style="text-align: center; margin-top: 25px; padding: 15px; background: #fff0f5; border-radius: 30px;">
-            <p style="font-family: 'Pacifico', cursive; font-size: 18px; color: #c4456a;">
-                🙏Maaf Yaa Kalo Fotonya Pakai AI🙏
-            </p>
-        </div>
-
-        `;
-            dynamicDiv.innerHTML = html;
-        }
-
-        function showRomanticList() {
-            let items = '';
-            romanticWordsList.forEach(item => {
-                items += `<div class="romantic-item">
-                <div class="romantic-emoji">${item.emoji}</div>
-                <div class="romantic-text">${item.text}</div>
-            </div>`;
-            });
-            dynamicDiv.innerHTML = `<div class="romantic-list"><h3>💗 Kata Cinta Untukmu 💗</h3>${items}</div>`;
-        }
-
-        function showMenuContent(menuId) {
-            if (menuId === 'lovezone') showLoveZone();
-            else if (menuId === 'gallery') showGallery();
-            else if (menuId === 'words') showRomanticList();
-            else if (menuId === 'next') showPage('finalstory');
-        }
-
-        function bindMenuEvents() {
-            document.querySelectorAll('.menu-item').forEach(item => {
-                item.onclick = () => {
-                    const val = item.getAttribute('data-menu');
-                    if (val === 'next') showPage('finalstory');
-                    else showMenuContent(val);
-                };
-            });
-        }
-
-        document.getElementById('submitPassword').onclick = () => {
-            if (document.getElementById('passwordInput').value === CORRECT_PASSWORD) {
-                document.getElementById('errorMsg').style.display = 'none';
-                showPage('welcome');
-            } else {
-                document.getElementById('errorMsg').style.display = 'block';
-            }
-        };
-        document.getElementById('passwordInput').onkeypress = (e) => {
-            if (e.key === 'Enter') document.getElementById('submitPassword').click();
-        };
-        document.getElementById('startExploringBtn').onclick = () => showPage('mainmenu');
-        document.getElementById('backToMainFromFinal').onclick = () => {
-            showPage('mainmenu');
-            dynamicDiv.innerHTML = happyAnniversaryText;
-            bindMenuEvents();
-        };
-        showPage('password');
-    </script>
+    <script src="main.js"></script>
 </body>
-
 </html>
